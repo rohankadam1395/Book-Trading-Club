@@ -1,6 +1,8 @@
 const express=require("express");
 const path=require("path");
+const bodyParser=require("body-parser");
 const app=express();
+app.use(bodyParser.json());
 
 if(process.env.NODE_ENV==='production'){
     app.use(express.static(path.join("client","build")));
@@ -11,12 +13,23 @@ if(process.env.NODE_ENV==='production'){
 }else{
 
     app.use(express.static(path.join("client","public")));
-    app.get("/",(req,res)=>{
+    
+    app.get("/api",(req,res)=>{
+        // console.log(req);
         console.log("Hello in dev mode");
-        res.sendFile(path.resolve(__dirname,"client","public","index.html"));
+        res.send("hello");
+    });
+    app.get("/abc",(req,res)=>{
+        console.log("We are in *");
+        res.sendFile(path.resolve(__dirname,"test.html"));
     });
 
+   
+    
+
 }
+
+
     
 
 
