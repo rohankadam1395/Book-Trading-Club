@@ -7,12 +7,14 @@ import Trades from "./Trades";
 import Users from "./Users";
 import Profile from "./Profile";
 import Navbar from "./Navbar";
+import Login from "./Login";
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            books:[],
+            isAuth:false
         }
 // this.signIn=this.signIn.bind(this);
 this.test=this.test.bind(this);
@@ -31,17 +33,27 @@ test(){
 })  
 }
 
+
+componentDidMount(){
+    fetch("/books").then(response=>response.json()).then(response=>{
+        console.log(response);
+        this.setState({
+            books:response.books,
+            isAuth:response.isAuth
+        })
+
+    })
+}
     render() {
         return (
             <div>
-
                 <BrowserRouter>
                     <div id="home">
-                        <Navbar />
+                        <Navbar isAuth={this.state.isAuth}/>
 
                         <Switch>
                             <Route exact path="/">
-                                <Books />
+                                <Books books={this.state.books}/>
                             </Route>
                             <Route path="/requests">
                                 <Requests />
@@ -55,15 +67,16 @@ test(){
                             <Route path="/profile/:name">
                                 <Profile />
                             </Route>
+                            <Route path="/login">
+                                <Login />
+                            </Route>
                         </Switch>
 
                     </div>
 
                 </BrowserRouter>
                 {/* <button onClick={this.signIn}>Sign in with Twitter</button> */}
-<a href="/auth/twitter">Sign in with Twitter</a>
-<button onClick={this.test}>Test</button>
-                <a href="https://www.freepik.com/vectors/logo">Logo vector created by freepik - www.freepik.com</a>
+
 
             </div>
         );

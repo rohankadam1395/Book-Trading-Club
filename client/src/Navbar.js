@@ -26,14 +26,16 @@ fetch("/logout").then(response=>response.text()).then(response=>{
 }
 
 render(){
-const isAuth=!!localStorage.getItem("token");
+const isAuth=this.props.isAuth;
+
     return<div id="navbar">
+
     <NavLink to="/">Books</NavLink>
 <NavLink to="/requests">Requests</NavLink>
 <NavLink to="/trades">Trades</NavLink>
 <NavLink to="/users">Users</NavLink>
 <NavLink to="/profile/rohan">Profile</NavLink>
-{isAuth ? <button onClick={this.logoutUser}>Logout</button> : <button onClick={this.loginUser}>Login</button>}
+{isAuth ? <button onClick={this.logoutUser}>Logout</button> : <NavLink to="/login">Login</NavLink>}
     </div>
 }
 }

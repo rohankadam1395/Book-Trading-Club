@@ -10,6 +10,8 @@ let Schema=mongoose.Schema;
  let UserSchema=new Schema({},{strict:false});
   let User=mongoose.model('User',UserSchema);
 
+let books=["book1","book1","book1","book1","book1","book1","book1"];
+
 const app=express();
 app.use(session({secret:"cats"}));
 app.use(bodyParser.json());
@@ -104,6 +106,15 @@ passport.serializeUser(function(user, done) {
           console.log("????????/Logging Out");
           req.logout();
           res.redirect("/");
+      });
+
+      app.get("/books",(req,res)=>{
+        
+          res.json({
+              books:books,
+              isAuth:req.isAuthenticated(),
+              userInfo:"user"
+          })
       })
 
   })
