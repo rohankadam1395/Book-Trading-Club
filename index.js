@@ -50,6 +50,16 @@ passport.use(new TwitterStartegy({
 
 }));
 
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
 app.get('/auth/twitter', passport.authenticate('twitter'));
 // app.get('/auth/twitter', (req,res)=>{
 //     console.log("Heyyyyyyyyyy");
