@@ -20,9 +20,14 @@ if(process.env.NODE_ENV==='production'){
     app.get("/",(req,res)=>{
         console.log(req.sessionID);
         console.log(req.isAuthenticated());
-        console.log("Hello in build mode");
+        console.log("Hello in Prod mode");
         res.sendFile(path.resolve(__dirname,"client","build","index.html"));
     });
+
+    app.get("/test",(req,res)=>{
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> In test");
+        res.send("Okayyyyy");
+    })
 }else{
 require("dotenv").config();
     app.use(express.static(path.join("client","public")));
