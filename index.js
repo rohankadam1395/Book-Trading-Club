@@ -48,6 +48,8 @@ passport.use(new TwitterStartegy({
 
     console.log(profile);
 
+    done(null,profile.id);
+
 }));
 
 passport.serializeUser(function(user, done) {
