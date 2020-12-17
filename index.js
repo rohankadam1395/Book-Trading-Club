@@ -2,10 +2,13 @@ const express=require("express");
 const path=require("path");
 const bodyParser=require("body-parser");
 let passport=require("passport");
+let session=require("express-session");
+
 let TwitterStartegy=require("passport-twitter").Strategy;
 
 
 const app=express();
+app.use(session({secret:"cats"}));
 app.use(bodyParser.json());
 app.use(express.static(path.join("client","build")));
 
