@@ -7,10 +7,10 @@ let TwitterStartegy=require("passport-twitter").Strategy;
 
 const app=express();
 app.use(bodyParser.json());
+app.use(express.static(path.join("client","build")));
 
 
 if(process.env.NODE_ENV==='production'){
-    app.use(express.static(path.join("client","build")));
     app.get("/",(req,res)=>{
         console.log("Hello in build mode");
         res.sendFile(path.resolve(__dirname,"client","build","index.html"));
