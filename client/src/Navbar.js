@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink,Link} from "react-router-dom";
 import {withRouter} from "react-router";
 class Navbar extends React.Component{
 constructor(props){
@@ -35,9 +35,9 @@ const isAuth=this.props.isAuth;
 <NavLink to="/trades">Trades</NavLink>
 <NavLink to="/users">Users</NavLink>
 <NavLink to="/profile/rohan">Profile</NavLink>
-{isAuth ? <a href="/logout">Logout</a> : <NavLink to="/login">Login</NavLink>}
+{isAuth ? <Link href="/logout">Logout</Link> : <NavLink to="/login">Login</NavLink>}
     </div>
 }
 }
 
-export default withRouter(Navbar);
+export default withRouter(Navbar);  
