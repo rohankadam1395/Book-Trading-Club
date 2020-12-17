@@ -48,7 +48,7 @@ passport.use(new TwitterStartegy({
 
     console.log(profile);
 
-    done(null,profile.id);
+    done(null,profile);
 
 }));
 
