@@ -1,11 +1,14 @@
 const express=require("express");
 const path=require("path");
+const mongoose=require("mongoose");
 const bodyParser=require("body-parser");
 let passport=require("passport");
 let session=require("express-session");
 
 let TwitterStartegy=require("passport-twitter").Strategy;
-
+let Schema=mongoose.Schema;
+ let UserSchema=new Schema({},{strict:false});
+  let User=mongoose.model('User',UserSchema);
 
 const app=express();
 app.use(session({secret:"cats"}));
@@ -38,6 +41,16 @@ require("dotenv").config();
 }
 
 
+  mongoose.connect(process.env.DB,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
+      if(err){
+          console.log(err);
+      }
+
+console.log("Successfully Connected to Database");
+
+
+
+
 passport.use(new TwitterStartegy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret:process.env.TWITTER_CONSUMER_SECRET,
@@ -47,8 +60,11 @@ passport.use(new TwitterStartegy({
     console.log(tokenSecret);
 
     console.log(profile);
+User.findOneAndUpdate({id:profile.id},{id:profile.id},{new:true,upsert:true},(err,docs)=>{
 
-    done(null,profile);
+    done(err,docs);
+
+})
 
 }));
 
@@ -62,16 +78,21 @@ passport.serializeUser(function(user, done) {
     });
   });
 
-app.get('/auth/twitter', passport.authenticate('twitter'));
-// app.get('/auth/twitter', (req,res)=>{
-//     console.log("Heyyyyyyyyyy");
-//     res.send("helllo");
-// });
 
-app.get('/auth/twitter/callback',
-passport.authenticate('twitter', { successRedirect: '/',
-                                   failureRedirect: '/login' }));
 
+      app.get('/auth/twitter', passport.authenticate('twitter'));
+      // app.get('/auth/twitter', (req,res)=>{
+      //     console.log("Heyyyyyyyyyy");
+      //     res.send("helllo");
+      // });
+      
+      app.get('/auth/twitter/callback',
+      passport.authenticate('twitter', { successRedirect: '/',
+                                         failureRedirect: '/login' }));
+      
+      
+
+  })
 
 
 
