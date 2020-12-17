@@ -16,7 +16,7 @@ this.props.history.push("/profile/rohan");
 }
 logoutUser(){
     console.log("Logging out");
-    localStorage.removeItem("token","some-token");
+    // localStorage.removeItem("token","some-token");
 fetch("/logout").then(response=>response.text()).then(response=>{
     console.log(response);
 })
@@ -35,7 +35,7 @@ const isAuth=this.props.isAuth;
 <NavLink to="/trades">Trades</NavLink>
 <NavLink to="/users">Users</NavLink>
 <NavLink to="/profile/rohan">Profile</NavLink>
-{isAuth ? <button onClick={this.logoutUser}>Logout</button> : <NavLink to="/login">Login</NavLink>}
+{isAuth ? <a href="/logout">Logout</a> : <NavLink to="/login">Login</NavLink>}
     </div>
 }
 }
