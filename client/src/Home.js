@@ -15,6 +15,8 @@ class Home extends React.Component {
 
         }
 // this.signIn=this.signIn.bind(this);
+this.test=this.test.bind(this);
+
     }
 
 //     signIn(){
@@ -22,6 +24,12 @@ class Home extends React.Component {
 //     console.log(response);
 // })
 //     }
+
+test(){
+  fetch("/test").then(response=>response.text()).then(response=>{
+    console.log(response);
+})  
+}
 
     render() {
         return (
@@ -54,6 +62,7 @@ class Home extends React.Component {
                 </BrowserRouter>
                 {/* <button onClick={this.signIn}>Sign in with Twitter</button> */}
 <a href="/auth/twitter">Sign in with Twitter</a>
+<button onClick={this.test}>Test</button>
                 <a href="https://www.freepik.com/vectors/logo">Logo vector created by freepik - www.freepik.com</a>
 
             </div>
