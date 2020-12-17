@@ -18,6 +18,8 @@ app.use(passport.initialize())
 
 if(process.env.NODE_ENV==='production'){
     app.get("/",(req,res)=>{
+        console.log(req.sessionID);
+        console.log(req.isAuthenticated());
         console.log("Hello in build mode");
         res.sendFile(path.resolve(__dirname,"client","build","index.html"));
     });
