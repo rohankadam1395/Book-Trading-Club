@@ -100,7 +100,11 @@ passport.serializeUser(function(user, done) {
       passport.authenticate('twitter', { successRedirect: '/',
                                          failureRedirect: '/login' }));
       
-      
+      app.get("/logout",(req,res)=>{
+          console.log("????????/Logging Out");
+          req.logout();
+          res.redirect("/");
+      })
 
   })
 

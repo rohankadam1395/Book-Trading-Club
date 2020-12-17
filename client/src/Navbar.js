@@ -18,7 +18,8 @@ logoutUser(){
     console.log("Logging out");
     localStorage.removeItem("token","some-token");
 
-    this.props.history.push("/");
+    // this.props.history.push("/");
+    this.props.history.push("/logout");
 
 }
 
