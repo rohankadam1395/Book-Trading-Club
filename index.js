@@ -11,7 +11,7 @@ const app=express();
 app.use(session({secret:"cats"}));
 app.use(bodyParser.json());
 app.use(express.static(path.join("client","build")));
-
+app.use(passport.initialize())
 
 if(process.env.NODE_ENV==='production'){
     app.get("/",(req,res)=>{
