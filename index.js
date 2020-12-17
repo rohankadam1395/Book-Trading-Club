@@ -1,8 +1,13 @@
 const express=require("express");
 const path=require("path");
 const bodyParser=require("body-parser");
+let passport=require("passport");
+let TwitterStartegy=require("passport-twitter").Strategy;
+
+
 const app=express();
 app.use(bodyParser.json());
+
 
 if(process.env.NODE_ENV==='production'){
     app.use(express.static(path.join("client","build")));
@@ -11,7 +16,7 @@ if(process.env.NODE_ENV==='production'){
         res.sendFile(path.resolve(__dirname,"client","build","index.html"));
     });
 }else{
-
+require("dotenv").config();
     app.use(express.static(path.join("client","public")));
     
     app.get("/api",(req,res)=>{
@@ -30,7 +35,27 @@ if(process.env.NODE_ENV==='production'){
 }
 
 
-    
+passport.use(new TwitterStartegy({
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret:process.env.TWITTER_CONSUMER_SECRET,
+    callbackURL: "http://127.0.0.1:5000/auth/twitter/callback"
+},(token,tokenSecret,profile,done)=>{
+    console.log(token);
+    console.log(tokenSecret);
+
+    console.log(profile);
+
+}));
+
+app.get('/auth/twitter', passport.authenticate('twitter'));
+// app.get('/auth/twitter', (req,res)=>{
+//     console.log("Heyyyyyyyyyy");
+//     res.send("helllo");
+// });
+
+app.get('/auth/twitter/callback',
+passport.authenticate('twitter', { successRedirect: '/',
+                                   failureRedirect: '/login' }));
 
 
 
