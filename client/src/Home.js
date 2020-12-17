@@ -14,14 +14,14 @@ class Home extends React.Component {
         this.state = {
 
         }
-this.signIn=this.signIn.bind(this);
+// this.signIn=this.signIn.bind(this);
     }
 
-    signIn(){
-fetch("/auth/twitter").then(response=>response.text()).then(response=>{
-    console.log(response);
-})
-    }
+//     signIn(){
+// fetch("/auth/twitter").then(response=>response.text()).then(response=>{
+//     console.log(response);
+// })
+//     }
 
     render() {
         return (
@@ -52,8 +52,8 @@ fetch("/auth/twitter").then(response=>response.text()).then(response=>{
                     </div>
 
                 </BrowserRouter>
-                <button onClick={this.signIn}>Sign in with Twitter</button>
-
+                {/* <button onClick={this.signIn}>Sign in with Twitter</button> */}
+<a href="/auth/twitter">Sign in with Twitter</a>
                 <a href="https://www.freepik.com/vectors/logo">Logo vector created by freepik - www.freepik.com</a>
 
             </div>
