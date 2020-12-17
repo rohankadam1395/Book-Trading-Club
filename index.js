@@ -26,6 +26,8 @@ if(process.env.NODE_ENV==='production'){
 
     app.get("/test",(req,res)=>{
         console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> In test");
+        console.log(req.sessionID);
+        console.log(req.isAuthenticated());
         res.send("Okayyyyy");
     })
 }else{
