@@ -80,10 +80,10 @@ passport.use(new TwitterStartegy({
 
     console.log(profile);
 
-User.findOneAndUpdate({"id":profile.id},{"name":profile.usernname,
+User.findOneAndUpdate({"id":profile.id},{"name":profile.username,
     "screenName":profile.displayName,
-    "location":profile.location,
-    "description":profile.description },{upsert:true,new:true},(err,docs)=>{
+    "location":profile['_json'].location,
+    "description":profile['_json'].description },{upsert:true,new:true},(err,docs)=>{
 if(err){
     console.log(err);
 }else{
