@@ -72,8 +72,13 @@ passport.use(new TwitterStartegy({
     // console.log(token);
     // console.log(tokenSecret);
 
-    // console.log(profile);
+    console.log(profile);
+
 User.findOneAndUpdate({id:profile.id},{name:profile.name,screenName:profile['screen_name'],location:profile.location,description:profile.description},{new:true,upsert:true},(err,docs)=>{
+if(err){
+    console.log(err);
+}
+
 
     done(err,docs);
 
