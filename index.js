@@ -7,7 +7,13 @@ let session=require("express-session");
 
 let TwitterStartegy=require("passport-twitter").Strategy;
 let Schema=mongoose.Schema;
- let UserSchema=new Schema({},{strict:false});
+ let UserSchema=new Schema({
+     id:Number,
+     name:String,
+    screenName:String,
+    location:String,
+    description:String
+ });
   let User=mongoose.model('User',UserSchema);
 
 let books=["book1","book1","book1","book1","book1","book1","book1"];
