@@ -75,7 +75,7 @@ passport.use(new TwitterStartegy({
     console.log(profile);
     
 
-User.findOneAndUpdate(profile.id,{"name":profile.name,
+User.findOneAndUpdate({"id":profile.id},{"name":profile.name,
     "screenName":profile['screen_name'],
     "location":profile.location,
     "description":profile.description },{upsert:true,new:true},(err,docs)=>{
