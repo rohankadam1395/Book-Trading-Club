@@ -65,7 +65,7 @@ componentDidMount(){
                                 <Users />
                             </Route>
                             <Route path="/profile/:name">
-                                <Profile />
+                                <Profile isAuth={this.state.isAuth}/>
                             </Route>
                             <Route path="/login">
                                 <Login />

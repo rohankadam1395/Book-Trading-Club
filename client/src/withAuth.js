@@ -1,12 +1,14 @@
 import { Redirect } from "react-router-dom";
 
 const withAuth=(Component)=>{
-    const AuthRoute=()=>{
-const isAuth=!!localStorage.getItem("token");
+    const AuthRoute=(props)=>{
+// const isAuth=!!localStorage.getItem("token");
+const isAuth=props.isAuth;
+
 if(isAuth){
     return <Component/>
 }else{
-    return <Redirect to="/" />
+    return <Redirect to="/login" />
 }
     }
 
