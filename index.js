@@ -73,7 +73,7 @@ passport.use(new TwitterStartegy({
     // console.log(tokenSecret);
 
     // console.log(profile);
-User.findOneAndUpdate({id:profile.id},{id:profile.id,name:profile.name,screenName:profile['screen_name'],location:profile.location,description:profile.description},{new:true,upsert:true},(err,docs)=>{
+User.findOneAndUpdate({id:profile.id},{name:profile.name,screenName:profile['screen_name'],location:profile.location,description:profile.description},{new:true,upsert:true},(err,docs)=>{
 
     done(err,docs);
 
@@ -110,7 +110,7 @@ passport.serializeUser(function(user, done) {
       });
 
       app.get("/data",(req,res)=>{
-        console.log(req.user);
+        // console.log(req.user);
           res.json({
               books:books,
               users:users,
