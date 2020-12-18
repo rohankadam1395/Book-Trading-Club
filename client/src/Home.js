@@ -14,6 +14,7 @@ class Home extends React.Component {
         super(props);
         this.state = {
             books:[],
+            users:[],
             isAuth:false
         }
 // this.signIn=this.signIn.bind(this);
@@ -35,11 +36,12 @@ test(){
 
 
 componentDidMount(){
-    fetch("/books").then(response=>response.json()).then(response=>{
+    fetch("/data").then(response=>response.json()).then(response=>{
         console.log(response);
         this.setState({
             books:response.books,
-            isAuth:response.isAuth
+            isAuth:response.isAuth,
+            users:response.users
         })
 
     })
@@ -62,7 +64,7 @@ componentDidMount(){
                                 <Trades />
                             </Route>
                             <Route path="/users">
-                                <Users />
+                                <Users users={this.state.users}/>
                             </Route>
                             <Route path="/profile/:name">
                                 <Profile isAuth={this.state.isAuth}/>

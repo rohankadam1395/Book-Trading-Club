@@ -11,6 +11,7 @@ let Schema=mongoose.Schema;
   let User=mongoose.model('User',UserSchema);
 
 let books=["book1","book1","book1","book1","book1","book1","book1"];
+let users=["user1","user1","user1","user1","user1","user1","user1"];
 
 const app=express();
 app.use(session({secret:"cats"}));
@@ -68,8 +69,8 @@ passport.use(new TwitterStartegy({
     consumerSecret:process.env.TWITTER_CONSUMER_SECRET,
     callbackURL: "https://warm-atoll-88598.herokuapp.com/auth/twitter/callback"
 },(token,tokenSecret,profile,done)=>{
-    console.log(token);
-    console.log(tokenSecret);
+    // console.log(token);
+    // console.log(tokenSecret);
 
     console.log(profile);
 User.findOneAndUpdate({id:profile.id},{id:profile.id},{new:true,upsert:true},(err,docs)=>{
@@ -108,12 +109,12 @@ passport.serializeUser(function(user, done) {
           res.redirect("/");
       });
 
-      app.get("/books",(req,res)=>{
+      app.get("/data",(req,res)=>{
         
           res.json({
               books:books,
+              users:users,
               isAuth:req.isAuthenticated(),
-              userInfo:"user"
           })
       })
 
