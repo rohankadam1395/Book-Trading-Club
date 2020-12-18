@@ -54,7 +54,7 @@ require("dotenv").config();
 }
 
 
-  mongoose.connect(process.env.DB,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
+  mongoose.connect(process.env.DB,{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false},(err)=>{
       if(err){
           console.log(err);
       }
@@ -73,7 +73,6 @@ passport.use(new TwitterStartegy({
     // console.log(tokenSecret);
 
     console.log(profile);
-    
 
 User.findOneAndUpdate({"id":profile.id},{"name":profile.name,
     "screenName":profile['screen_name'],
@@ -81,11 +80,13 @@ User.findOneAndUpdate({"id":profile.id},{"name":profile.name,
     "description":profile.description },{upsert:true,new:true},(err,docs)=>{
 if(err){
     console.log(err);
-}
+}else{
 
-console.log(docs);
+    console.log(docs);
 
     done(err,docs);
+}
+
 
 })
 
