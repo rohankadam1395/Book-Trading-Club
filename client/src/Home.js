@@ -38,6 +38,8 @@ test(){
 componentDidMount(){
     fetch("/data").then(response=>response.json()).then(response=>{
         console.log(response);
+        console.log("Cookie");
+        console.log(document.cookie);
         this.setState({
             books:response.books,
             isAuth:response.isAuth,
