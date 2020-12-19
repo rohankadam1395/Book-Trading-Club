@@ -8,6 +8,7 @@ let session=require("express-session");
 let TwitterStartegy=require("passport-twitter").Strategy;
 let Schema=mongoose.Schema;
  let UserSchema=new Schema({
+     _id:Object,
      id:Number,
      name:String,
     screenName:String,
@@ -99,11 +100,17 @@ if(err){
 }));
 
 passport.serializeUser(function(user, done) {
+    console.log("Serializing");
+    console.log(user);
     done(null, user.id);
   });
   
   passport.deserializeUser(function(id, done) {
+    console.log("De-Serializing");
+    console.log(id);
     User.findById(id, function(err, user) {
+        console.log('Found in deserailized');
+        console.log(user);
       done(err, user);
     });
   });
