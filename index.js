@@ -134,7 +134,7 @@ passport.serializeUser(function(user, done) {
           res.redirect("/");
       });
 
-      app.get("/data",passport.authenticate('twitter'),(req,res)=>{
+      app.get("/data",(req,res)=>{
           console.log("in /data ");
         console.log(req.user);
           res.json({
