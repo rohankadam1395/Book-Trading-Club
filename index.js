@@ -127,7 +127,7 @@ passport.serializeUser(function(user, done) {
       });
 
       app.get("/data",(req,res)=>{
-        // console.log(req.user);
+        console.log(req);
           res.json({
               books:books,
               users:users,
