@@ -16,7 +16,11 @@ class Home extends React.Component {
             books:[],
             users:[],
             isAuth:false,
-            user:{}
+            user:{id:"",
+        description:"",
+    location:"",
+name:"",
+sreenName:""}
         }
 // this.signIn=this.signIn.bind(this);
 this.test=this.test.bind(this);
@@ -38,15 +42,29 @@ test(){
 
 componentDidMount(){
     fetch("/data").then(response=>response.json()).then(response=>{
+        console.log("Response from /data");
         console.log(response);
         console.log("Cookie");
         console.log(document.cookie);
-        this.setState({
-            books:response.books,
-            isAuth:response.isAuth,
-            users:response.users,
-            user:response.user
-        })
+        console.log(response.user);
+if(response.user){
+    console.log("Setting State for Auth");
+    this.setState({
+        books:response.books,
+        isAuth:response.isAuth,
+        users:response.users,
+        user:response.user
+    })
+}else{
+    console.log("Setting State for UnAuth");
+    this.setState({
+        books:response.books,
+        users:response.users,
+        isAuth:response.isAuth,
+    })
+}
+        
+     
 
     })
 }
