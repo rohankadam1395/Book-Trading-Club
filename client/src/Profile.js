@@ -26,6 +26,7 @@ render(){
 return(<div>
     Profile Page
     {console.log(this.props.match.params.name)}
+    <h1>Under Construction</h1>
     <form id="profile" onSubmit={this.submitHandler}>
         <div>
         <label for="name">Full Name</label>

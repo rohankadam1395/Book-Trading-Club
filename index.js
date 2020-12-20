@@ -141,6 +141,7 @@ passport.serializeUser(function(user, done) {
               books:books,
               users:users,
               isAuth:req.isAuthenticated(),
+              user:req.user
           })
       })
 
