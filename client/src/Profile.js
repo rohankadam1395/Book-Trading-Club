@@ -14,6 +14,7 @@ city:""
 
   componentDidMount(){
       console.log("Profile Mounted");
+      console.log(this.props);
   }
 
   submitHandler=(event)=>{

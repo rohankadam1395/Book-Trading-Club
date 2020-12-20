@@ -15,7 +15,8 @@ class Home extends React.Component {
         this.state = {
             books:[],
             users:[],
-            isAuth:false
+            isAuth:false,
+            user:{}
         }
 // this.signIn=this.signIn.bind(this);
 this.test=this.test.bind(this);
@@ -43,7 +44,8 @@ componentDidMount(){
         this.setState({
             books:response.books,
             isAuth:response.isAuth,
-            users:response.users
+            users:response.users,
+            user:response.user
         })
 
     })
@@ -53,7 +55,7 @@ componentDidMount(){
             <div>
                 <BrowserRouter>
                     <div id="home">
-                        <Navbar isAuth={this.state.isAuth}/>
+                        <Navbar isAuth={this.state.isAuth} id={this.state.user.id}/>
 
                         <Switch>
                             <Route exact path="/">
@@ -69,7 +71,7 @@ componentDidMount(){
                                 <Users users={this.state.users}/>
                             </Route>
                             <Route path="/profile/:name">
-                                <Profile isAuth={this.state.isAuth} />
+                                <Profile isAuth={this.state.isAuth} user={this.state.user}/>
                             </Route>
                             <Route path="/login">
                                 <Login />

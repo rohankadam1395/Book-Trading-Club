@@ -34,7 +34,7 @@ const isAuth=this.props.isAuth;
 <NavLink to="/requests">Requests</NavLink>
 <NavLink to="/trades">Trades</NavLink>
 <NavLink to="/users">Users</NavLink>
-<NavLink to="/profile/rohan">Profile</NavLink>
+<NavLink to={"/profile/"+this.props.id}>Profile</NavLink>
 {isAuth ? <a href="/logout">Logout</a> : <NavLink to="/login">Login</NavLink>}
     </div>
 }

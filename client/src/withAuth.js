@@ -5,6 +5,7 @@ const withAuth=(Component)=>{
 // const isAuth=!!localStorage.getItem("token");
 const isAuth=props.isAuth;
 
+
 if(isAuth){
     return <Component/>
 }else{
