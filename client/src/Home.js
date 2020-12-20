@@ -16,7 +16,7 @@ class Home extends React.Component {
             books:[],
             users:[],
             isAuth:false,
-            user:{id:"",
+            user:{id:"unauth",
         description:"",
     location:"",
 name:"",
