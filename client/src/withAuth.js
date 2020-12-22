@@ -8,7 +8,7 @@ console.log("In withAuth");
 console.log(props);
 
 if(isAuth){
-    return <Component/>
+    return <Component user={props}/>
 }else{
     return <Redirect to="/login" />
 }
