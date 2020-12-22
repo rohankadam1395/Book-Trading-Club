@@ -23,7 +23,6 @@ name:"",
 sreenName:""}
         }
 // this.signIn=this.signIn.bind(this);
-this.test=this.test.bind(this);
 
     }
 
