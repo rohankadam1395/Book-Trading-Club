@@ -33,11 +33,7 @@ this.test=this.test.bind(this);
 // })
 //     }
 
-test(){
-  fetch("/test").then(response=>response.text()).then(response=>{
-    console.log(response);
-})  
-}
+
 
 
 componentDidMount(){

@@ -1,6 +1,11 @@
 import React from "react";
 class Login extends React.Component{
 
+    test(){
+        fetch("/data").then(response=>response.json()).then(response=>{
+          console.log(response);
+      })  
+      }
     render(){
         return <div>
             This is a Login Page

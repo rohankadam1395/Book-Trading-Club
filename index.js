@@ -35,12 +35,7 @@ if(process.env.NODE_ENV==='production'){
         res.sendFile(path.resolve(__dirname,"client","build","index.html"));
     });
 
-    app.get("/test",(req,res)=>{
-        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> In test");
-        console.log(req.sessionID);
-        console.log(req.isAuthenticated());
-        res.send("Okayyyyy");
-    })
+  
 }else{
 require("dotenv").config();
     app.use(express.static(path.join("client","public")));
@@ -55,7 +50,12 @@ require("dotenv").config();
         res.sendFile(path.resolve(__dirname,"test.html"));
     });
 
-   
+    app.get("/test",(req,res)=>{
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> In test");
+        console.log(req.sessionID);
+        console.log(req.isAuthenticated());
+        res.send("Okayyyyy");
+    })
     
 
 }
@@ -134,15 +134,27 @@ passport.serializeUser(function(user, done) {
           res.redirect("/");
       });
 
-      app.get("/data",(req,res)=>{
+      app.get("/data",(req,res,done)=>{
           console.log("in /data ");
-        console.log(req.user);
-          res.json({
-              books:books,
-              users:users,
-              isAuth:req.isAuthenticated(),
-              user:req.user
+        //   console.log(process.env.DB);
+          User.find({},(err,docs)=>{
+              let users=docs;
+              if(err){
+                  console.log(err);
+              }else{
+                  console.log("Got All Docs");
+                  console.log(docs);
+                  res.json({
+                    books:books,
+                    users:users,
+                    isAuth:req.isAuthenticated(),
+                    user:req.user
+                });
+                done();
+              }
           })
+        console.log(req.user);
+       
       })
 
   })

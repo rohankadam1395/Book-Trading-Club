@@ -6,15 +6,14 @@ class Profile extends React.Component{
   constructor(props){
       super(props);
       this.state={
-fullname:"",
-state:"",
-city:""
+
       }
   }
 
   componentDidMount(){
       console.log("Profile Mounted");
       console.log(this.props);
+        
   }
 
   submitHandler=(event)=>{

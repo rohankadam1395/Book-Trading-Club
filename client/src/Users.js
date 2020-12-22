@@ -10,7 +10,12 @@ return(<div>
     Users Page
     <ul>
         {this.props.users.map((data,index)=>{
-            return <li key={index}>{data}</li>
+            return <li key={index}>
+                <p>Name:{data.name}</p>
+                <p>Location:{data.location}</p>
+                <p>Screen Name:{data.screenName}</p>
+                <p>Description:{data.description}</p>
+                </li>
         })}
     </ul>
 </div>)

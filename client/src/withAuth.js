@@ -4,7 +4,8 @@ const withAuth=(Component)=>{
     const AuthRoute=(props)=>{
 // const isAuth=!!localStorage.getItem("token");
 const isAuth=props.isAuth;
-
+console.log("In withAuth");
+console.log(props);
 
 if(isAuth){
     return <Component/>
