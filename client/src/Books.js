@@ -24,7 +24,7 @@ return(<div>
               return <li>{data.books[0].title}</li>
 
             }else{
-              return {};
+              return [];
             }
                   
             
