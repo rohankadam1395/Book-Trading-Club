@@ -13,7 +13,9 @@ let Schema=mongoose.Schema;
      name:String,
     screenName:String,
     location:String,
-    description:String
+    description:String,
+    books:[{title:String,
+    description:String}]
  });
   let User=mongoose.model('User',UserSchema);
 
@@ -163,7 +165,18 @@ passport.serializeUser(function(user, done) {
           console.log(req.body);
           console.log(req.user);
           console.log("in post of addbook");
-          res.send({ans:"Form Received"});
+          if(req.isAuthenticated()){
+              User.findOne({id:req.user.id},(err,doc)=>{
+                  if(err){
+                      console.log(doc);
+                      res.send(doc);
+                  }else{
+                      console.log(err);
+                      res.send({ans:"Erro Received from database"});
+
+                  }
+              })
+          }
       })
 
   })
