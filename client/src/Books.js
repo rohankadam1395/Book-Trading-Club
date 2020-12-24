@@ -20,11 +20,8 @@ return(<div>
         {this.props.books.map((data,index)=>{
             // return <li key={index}>{data.books[0]}</li>
             console.log(data);
-            if(data.books.length>0){
               return <li>{data.books[0].title}</li>
-                        }else{
-                          return data;
-                        }
+                  
             
         })}
     </ul>
