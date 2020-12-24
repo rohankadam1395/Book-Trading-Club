@@ -167,7 +167,7 @@ passport.serializeUser(function(user, done) {
           console.log("in post of addbook");
           if(req.isAuthenticated()){
               console.log(req.user.id);
-              User.findOneAndUpdate({"id":req.user.id},{$push:{books:req.body}},(err,doc)=>{
+              User.findOneAndUpdate({"id":req.user.id},{$push:{books:req.body}},{new:true},(err,doc)=>{
                   console.log("From Database");
                   if(err){
                       console.log(err);
