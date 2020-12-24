@@ -170,10 +170,10 @@ passport.serializeUser(function(user, done) {
               User.findOne({"id":req.user.id},(err,doc)=>{
                   console.log("From Database");
                   if(err){
-                      console.log(doc);
-                      res.send(doc);
-                  }else{
                       console.log(err);
+                      res.send(err);
+                  }else{
+                      console.log(doc);
                       res.send({ans:"Erro Received from database"});
 
                   }
