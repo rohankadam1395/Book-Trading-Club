@@ -8,6 +8,7 @@ import Users from "./Users";
 import Profile from "./Profile";
 import Navbar from "./Navbar";
 import Login from "./Login";
+import AddBook from "./AddBook";
 
 class Home extends React.Component {
     constructor(props) {
@@ -88,6 +89,9 @@ if(response.user){
                             </Route>
                             <Route path="/login">
                                 <Login />
+                            </Route>
+                            <Route path="/addbook">
+<AddBook/>
                             </Route>
                         </Switch>
 

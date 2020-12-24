@@ -21,8 +21,9 @@ let books=["book1","book1","book1","book1","book1","book1","book1"];
 let users=["user1","user1","user1","user1","user1","user1","user1"];
 
 const app=express();
-app.use(session({secret:"cats"}));
 app.use(bodyParser.json());
+
+app.use(session({secret:"cats"}));
 app.use(express.static(path.join("client","build")));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -155,6 +156,14 @@ passport.serializeUser(function(user, done) {
           })
         console.log(req.user);
        
+      })
+
+      app.post("/addbook",(req,res)=>{
+          console.log(req.headers);
+          console.log(req.body);
+          console.log(req.user);
+          console.log("in post of addbook");
+          res.send({ans:"Form Received"});
       })
 
   })
