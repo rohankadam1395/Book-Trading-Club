@@ -19,7 +19,7 @@ class Profile extends React.Component{
   submitHandler=(event)=>{
       event.preventDefault();
       console.log(event.target);
-      fetch("/profile",{method:"PUT",body:{"test":"123"}}).then(response=>response.json()).then(response=>{
+      fetch("/profile",{method:"PUT",body:JSON.stringify({"test":"123"})}).then(response=>response.json()).then(response=>{
 
           console.log(response);
       })
