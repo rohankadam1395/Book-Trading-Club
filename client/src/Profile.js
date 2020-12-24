@@ -19,6 +19,10 @@ class Profile extends React.Component{
   submitHandler=(event)=>{
       event.preventDefault();
       console.log(event.target);
+      fetch("/profile",{method:"PUT",body:{test:"123"}}).then(response=>response.json()).then(response=>{
+          
+          console.log(response);
+      })
 
   }
 render(){
@@ -30,7 +34,7 @@ return(<div>
     <form id="profile" onSubmit={this.submitHandler}>
         <div>
         <label for="name">Full Name</label>
-        <input id="name" />
+        <input id="name" value={this.props.user.screenName}/>
         </div>
        <div>
        <label for="city">City</label>

@@ -181,6 +181,14 @@ passport.serializeUser(function(user, done) {
             res.send({error:"User is not authenticated"});
 
           }
+      });
+
+      app.put("/profile",(req,res)=>{
+          console.log(req.headers);
+          console.log(req.body);
+
+          res.send({ans:"Hey There"});
+
       })
 
   })
