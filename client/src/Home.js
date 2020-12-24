@@ -14,7 +14,6 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            books:[],
             users:[],
             isAuth:false,
             user:{id:"unauth",
@@ -43,10 +42,10 @@ componentDidMount(){
         console.log("Cookie");
         console.log(document.cookie);
         console.log(response.user);
+        
 if(response.user){
     console.log("Setting State for Auth");
     this.setState({
-        books:response.books,
         isAuth:response.isAuth,
         users:response.users,
         user:response.user
@@ -54,7 +53,6 @@ if(response.user){
 }else{
     console.log("Setting State for UnAuth");
     this.setState({
-        books:response.books,
         users:response.users,
         isAuth:response.isAuth,
     })
@@ -73,7 +71,7 @@ if(response.user){
 
                         <Switch>
                             <Route exact path="/">
-                                <Books books={this.state.books}/>
+                                <Books books={this.state.users}/>
                             </Route>
                             <Route path="/requests">
                                 <Requests />

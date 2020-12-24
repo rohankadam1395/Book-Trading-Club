@@ -11,6 +11,7 @@ let obj2={
 fetch("/addbook",{method:'POST',headers:{'Content-Type': 'application/json'},body:JSON.stringify(obj2)}).then(response=>response.json()).then(response=>{
     console.log("making an Add book POST");    
     console.log(response);
+
 })
     }
 render(){

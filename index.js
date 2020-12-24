@@ -19,8 +19,8 @@ let Schema=mongoose.Schema;
  });
   let User=mongoose.model('User',UserSchema);
 
-let books=["book1","book1","book1","book1","book1","book1","book1"];
-let users=["user1","user1","user1","user1","user1","user1","user1"];
+// let books=["book1","book1","book1","book1","book1","book1","book1"];
+// let users=["user1","user1","user1","user1","user1","user1","user1"];
 
 const app=express();
 app.use(bodyParser.json());
@@ -148,7 +148,6 @@ passport.serializeUser(function(user, done) {
                   console.log("Got All Docs");
                   console.log(docs);
                   res.json({
-                    books:books,
                     users:users,
                     isAuth:req.isAuthenticated(),
                     user:req.user

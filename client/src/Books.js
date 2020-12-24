@@ -17,8 +17,8 @@ render(){
 return(<div>
     Books Page
     <ul>
-        {this.props.books.map((data,index)=>{
-            return <li key={index}>{data}</li>
+        {this.props.users.map((data,index)=>{
+            return <li key={index}>{data.books[0]}</li>
         })}
     </ul>
 
