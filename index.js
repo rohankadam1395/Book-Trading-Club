@@ -164,19 +164,22 @@ passport.serializeUser(function(user, done) {
           console.log(req.body);
           console.log(req.user);
           console.log("in post of addbook");
-          if(req.isAuthenticated()){
+          if(req.isAuthenticated()){    
               console.log(req.user.id);
               User.findOneAndUpdate({"id":req.user.id},{$push:{books:req.body}},{new:true},(err,doc)=>{
                   console.log("From Database");
                   if(err){
                       console.log(err);
-                      res.send(err);
+                      res.send({error:err});
                   }else{
                       console.log(doc);
-                      res.send(doc);
+                      res.send({success:"Book Added"});
 
                   }
               })
+          }else{
+            res.send({error:"User is not authenticated"});
+
           }
       })
 

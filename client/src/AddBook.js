@@ -1,6 +1,13 @@
 import React from "react";
 class AddBook extends React.Component{
+constructor(props){
+    super(props);
+    this.state={
+        status:""
+    }
 
+    this.handleSubmit=this.handleSubmit.bind(this);
+}
     handleSubmit(event){
 event.preventDefault();
 console.log(event.target.title.value);
@@ -11,6 +18,16 @@ let obj2={
 fetch("/addbook",{method:'POST',headers:{'Content-Type': 'application/json'},body:JSON.stringify(obj2)}).then(response=>response.json()).then(response=>{
     console.log("making an Add book POST");    
     console.log(response);
+    let status="";
+    if(response.error){
+status=response.error;
+    }else{
+        status=response.success;
+
+    }
+    this.setState({
+        status:status
+    })
 
 })
     }
@@ -23,6 +40,7 @@ render(){
             <label htmlFor="description">Description</label>
             <input type="text" id="description" name="description"></input>
             <button type="submit">Add Book</button>
+            {this.state.status}
         </form>
     </div>
 }
