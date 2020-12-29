@@ -104,7 +104,7 @@ this.setState({
 
                         <Switch>
                             <Route exact path="/">
-                                <Books books={this.state.users}/>
+                                <Books users={this.state.users}/>
                             </Route>
                             <Route path="/requests">
                                 <Requests />
