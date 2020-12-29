@@ -7,8 +7,8 @@ class Profile extends React.Component{
       super(props);
       this.state={
 name:this.props.user.user.screenName,
-city:this.props.user.user.location.match(/.+?(?=\s,)/)[0] || "",
-state:this.props.user.user.location.match(/.*,\s(.+)/)[1] || ""
+city:this.props.user.user.location.match(/.+?(?=,)/)[0],
+state:this.props.user.user.location.match(/.*,\s(.+)/)[1]
       }
       this.nameChange=this.nameChange.bind(this);
       this.cityChange=this.cityChange.bind(this);
