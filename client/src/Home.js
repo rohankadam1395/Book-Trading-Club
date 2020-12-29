@@ -23,6 +23,7 @@ name:"",
 sreenName:""}
         }
 // this.signIn=this.signIn.bind(this);
+this.handler=this.handler.bind(this);
 
     }
 
@@ -62,6 +63,15 @@ if(response.user){
 
     })
 }
+
+
+handler(val){
+    console.log("Handler Called");
+    console.log(val);
+    this.setState({
+user:val
+    })
+}
     render() {
         return (
             <div>
@@ -83,7 +93,7 @@ if(response.user){
                                 <Users users={this.state.users}/>
                             </Route>
                             <Route path="/profile/:name">
-                                <Profile isAuth={this.state.isAuth} user={this.state.user}/>
+                                <Profile isAuth={this.state.isAuth} user={this.state.user} handler={this.handler}/>
                             </Route>
                             <Route path="/login">
                                 <Login />

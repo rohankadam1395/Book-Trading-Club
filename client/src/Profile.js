@@ -33,7 +33,7 @@ state:this.props.user.user.location.match(/.*,\s(.+)/)[1]
 
       }
       fetch("/profile",{method:"PUT",headers:{"Content-Type": "application/json "},body:JSON.stringify(obj)}).then(response=>response.json()).then(response=>{
-
+this.props.user.handler(response.user);
           console.log(response);
       })
 
