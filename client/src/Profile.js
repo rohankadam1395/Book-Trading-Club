@@ -40,7 +40,7 @@ return(<div>
     <form id="profile" onSubmit={this.submitHandler}>
         <div>
         <label for="name">Full Name</label>
-        <input id="name" value={this.props.user.screenName}/>
+        <input id="name" value={this.props.user.user.screenName}/>
         </div>
        <div>
        <label for="city">City</label>
