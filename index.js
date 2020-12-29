@@ -95,10 +95,13 @@ if(err){
     console.log(docs);
 
 if(!docs){
-    const user=new User({"name":profile.username,
-    "screenName":profile.displayName,
-    "location":profile['_json'].location,
-    "description":profile['_json'].description });
+
+    // {"name":profile.username,
+    // "screenName":profile.displayName,
+    // "location":profile['_json'].location,
+    // "description":profile['_json'].description }
+
+    const user=new User(profile);
 
     user.save(function(err2,obj){
         if(err){
