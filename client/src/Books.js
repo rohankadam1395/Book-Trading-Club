@@ -21,10 +21,12 @@ return(<div>
             // return <li key={index}>{data.books[0]}</li>
             console.log(data);
             if(data.books.length>0){
+              let books=[];
               for(let book of data.books){
-                return <li>{book.title}</li>
+                books.push(<li>{book.title}</li>);
 
               }
+              return books;
 
             }else{
               return [];
