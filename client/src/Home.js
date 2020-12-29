@@ -24,6 +24,9 @@ sreenName:""}
         }
 // this.signIn=this.signIn.bind(this);
 this.handler=this.handler.bind(this);
+this.bookHandler=this.bookHandler.bind(this);
+
+
 
     }
 
@@ -72,6 +75,26 @@ handler(val){
 user:val
     })
 }
+
+bookHandler(val){
+    console.log("Book Handler Called");
+let usersCopy=this.state.users.slice();
+
+usersCopy.filter((value)=>{
+    if(value.id===this.state.user.id){
+        value.books.push(val);
+        return true;
+    }else{
+        return false;
+    }
+});
+
+this.setState({
+    users:usersCopy
+})
+
+
+}
     render() {
         return (
             <div>
@@ -99,7 +122,7 @@ user:val
                                 <Login />
                             </Route>
                             <Route path="/addbook">
-<AddBook/>
+                            <AddBook  handler={this.bookHandler}/>
                             </Route>
                         </Switch>
 
