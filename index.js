@@ -101,7 +101,12 @@ if(!docs){
     // "location":profile['_json'].location,
     // "description":profile['_json'].description }
 
-    const user=new User(profile);
+    const user=new User({
+        "id":profile.id,
+    "name":profile.username,
+    "screenName":profile.displayName,
+    "location":profile['_json'].location,
+    "description":profile['_json'].description });
 
     user.save(function(err2,obj){
         if(err){
