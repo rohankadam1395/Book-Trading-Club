@@ -207,7 +207,7 @@ passport.serializeUser(function(user, done) {
       app.put("/profile",(req,res)=>{
           console.log(req.headers);
           console.log(req.body);
-User.findOneAndUpdate({"id":req.user.id},{name:req.body.name,location:req.body.city+", "+req.body.state},{new:true},function(err,doc){
+User.findOneAndUpdate({"id":req.user.id},{screenName:req.body.name,location:req.body.city+", "+req.body.state},{new:true},function(err,doc){
     if(err){
         res.send({"error":err});
     }else{
