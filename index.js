@@ -8,7 +8,6 @@ let session=require("express-session");
 let TwitterStartegy=require("passport-twitter").Strategy;
 let Schema=mongoose.Schema;
  let UserSchema=new Schema({
-     _id:Object,
      id:Number,
      name:String,
     screenName:String,
