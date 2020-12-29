@@ -84,20 +84,38 @@ passport.use(new TwitterStartegy({
 
     // console.log(profile);
 
-    // {"name":profile.username,
-    // "screenName":profile.displayName,
-    // "location":profile['_json'].location,
-    // "description":profile['_json'].description }
+    
 
 User.findOne({"id":profile.id},(err,docs)=>{
 
 if(err){
     console.log(err);
+    done(err,docs);
 }else{
-
+    console.log("No Roor in finding doc");
     console.log(docs);
 
+if(!docs){
+    const user=new User({"name":profile.username,
+    "screenName":profile.displayName,
+    "location":profile['_json'].location,
+    "description":profile['_json'].description });
+
+    user.save(function(err2,obj){
+        if(err){
+            console.log(err2);
+            done(err2,obj);
+        }else{
+            console.log("User Saved");
+            console.log(obj);
+done(err2,obj);
+        }
+    })
+}else{
+    console.log("User Already Exists");
     done(err,docs);
+}
+
 }
 
 
