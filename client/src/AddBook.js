@@ -24,7 +24,7 @@ fetch("/addbook",{method:'POST',headers:{'Content-Type': 'application/json'},bod
 status=response.error;
     }else{
         status=response.success;
-this.props.bookHandler(obj2);
+this.props.handler(obj2);
     }
     this.setState({
         status:status
