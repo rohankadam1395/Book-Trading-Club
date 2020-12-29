@@ -186,8 +186,13 @@ passport.serializeUser(function(user, done) {
       app.put("/profile",(req,res)=>{
           console.log(req.headers);
           console.log(req.body);
-
-          res.send({ans:"Hey There"});
+User.findOne({"id":req.user.id},function(err,doc){
+    if(err){
+        res.send({"error":err});
+    }else{
+        res.send({user:doc});
+    }
+})
 
       })
 
