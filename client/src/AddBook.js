@@ -7,6 +7,7 @@ constructor(props){
     }
 
     this.handleSubmit=this.handleSubmit.bind(this);
+    // this.change=this.change.bind(this);
 }
     handleSubmit(event){
 event.preventDefault();
@@ -31,12 +32,16 @@ status=response.error;
 
 })
     }
+
+//     change(event){
+// console.log(event.target.value);
+//     }
 render(){
     return <div>
         Add Book For 
         <form onSubmit={this.handleSubmit}> 
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" name="title" required></input>
+            <input type="text" id="title" name="title" required ></input>
             <label htmlFor="description">Description</label>
             <input type="text" id="description" name="description"></input>
             <button type="submit">Add Book</button>
